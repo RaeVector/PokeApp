@@ -1,9 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    distDir: "build",
     reactStrictMode: true,
     images: {
-        domains: ["assets.pokemon.com"],
+       unoptimized: true,
+        remotePatterns: [
+          {
+            protocol: "https",
+            hostname: "assets.pokemon.com"
+          }
+          
+        ],
   },
 };
 
