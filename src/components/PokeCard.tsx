@@ -3,7 +3,7 @@ import {  fetchPokemon } from "@/lib/callPokeAPI"
 import { useEffect, useState } from "react"
 import Link from "next/link"
 import TypeColourPicker from "./ColourPicker"
-
+import Image from "next/image"
 interface PokemonInfo {
     pokemonName: string;
     pokemonID: string;
@@ -58,13 +58,14 @@ export default function PokeCard({pokeName}: any) {
 
                     {/* Pokemon Sprite */}
                     <div className="col-span-10 rounded-t-lg row-span-6 bg-slate-100 content-center place-self-center">
-                        <img
-                                className='img' 
-                                src={`${data.pokemonSprite}`} 
-                                width={'500'}
-                                height={'500'}
-                                alt={pokeName}
-                        />
+                        <Image
+                            className='image' 
+                            src={`${data.pokemonSprite}`} 
+                            width={'500'}
+                            height={'500'}
+                            alt={pokeName}
+                        >
+                        </Image>
                     </div>
                     {/*  */}
 

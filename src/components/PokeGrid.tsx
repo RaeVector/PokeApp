@@ -1,10 +1,4 @@
-
 import PokeCard from "./PokeCard"
-import Link from "next/link"
-
-import { fetchAllPokemon, fetchPokemon} from "@/lib/callPokeAPI"
-import { useEffect, useState } from "react"
-
 
 interface PokemonGridProps {
     pokemonList: any[]

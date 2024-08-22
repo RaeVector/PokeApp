@@ -3,8 +3,6 @@ import RootLayout from "./layout";
 import PokeGrid from "@/components/PokeGrid";
 import { useState, useEffect } from "react";
 import { fetchAllPokemon } from "@/lib/callPokeAPI";
-import PageTurner from "@/components/PageTurner";
-
 
 
 export default function Home() {

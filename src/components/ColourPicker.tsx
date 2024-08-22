@@ -1,4 +1,3 @@
-
 //function to pick a background colour for pokemon types
 //tried to do this within tailwind itself but theres no functionality for
 //using template literals
