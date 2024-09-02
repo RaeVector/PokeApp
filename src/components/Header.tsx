@@ -7,7 +7,8 @@ export default function Header() {
                     <Image
                             src={'/pokeball.png'}
                             width={30}
-                            height={30} alt={"pokeball"}
+                            height={30} 
+                            alt={"pokeball"}
                         />
                     <Link href="/">
                         <span className="self-center text-4xl font-semibold  p-2">

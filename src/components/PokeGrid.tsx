@@ -7,12 +7,10 @@ interface PokemonGridProps {
 export default function PokeGrid({ pokemonList }: PokemonGridProps) {
     const pokemonsList = pokemonList
     const pokemons = Object.values(pokemonsList)[0]
-    // console.log("first pokemon: " + pokemons[0])
-    // console.log(pokemons)
     return (
         <div className=" grid grid-cols-4 p-4 gap-4 rounded border-slate-700 pb-10">
             {/* Grid pieces (theres definitely a nicer way to do this.) */}
-            <PokeCard pokeName={pokemons[0]}/>
+            <PokeCard pokeName={pokemons[0]} />
             <PokeCard pokeName={pokemons[1]}/>
             <PokeCard pokeName={pokemons[2]}/>
             <PokeCard pokeName={pokemons[3]}/>

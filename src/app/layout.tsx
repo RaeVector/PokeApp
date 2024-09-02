@@ -18,10 +18,8 @@ export default function RootLayout({
   return (
     <html className="mx-32 object-middle" lang="en">
       <body className={inter.className}>
-           <Header/>
-           <NavBar/>
            {children}
-           <Footer/>
+           {/* <Footer/> */}
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import TypeColourPicker from "./ColourPicker"
 import Image from "next/image"
+import { CLIENT_STATIC_FILES_PATH } from "next/dist/shared/lib/constants"
 interface PokemonInfo {
     pokemonName: string;
     pokemonID: string;
@@ -29,7 +30,7 @@ export default function PokeCard({pokeName}: any) {
     //set pokemon info in state
     useEffect(() => {
         async function fetchData() {
-            await timeout(2000)
+            await timeout(1000)
             const pokeInfo = await fetchPokemon(pokemonName);
             setData(pokeInfo);
         }
@@ -46,15 +47,12 @@ export default function PokeCard({pokeName}: any) {
     const typecolour1 = data.pokemonTypes[0]
     const typecolour2 = data.pokemonTypes[1]
 
-    // functionality not included yet
-    function goToPokemon(pokemonName:any){
-        const name = pokeName
-        console.log(name)
-    }
+    const pokemonNameCapital = data.pokemonName //have to set again because the name for the card is sometimes set with id rather than name
+    const pokemonNameActual = pokemonNameCapital.charAt(0).toLowerCase() + pokemonNameCapital.slice(1) //this is a bit hacky
     return (
         <div>
-            <Link href={"/"}>
-                <div onClick={goToPokemon} className="flex flex-auto grid grid-rows-10 grid-cols-10 rounded-lg shadow-md shadow-slate-500 hover:shadow-black hover:shadow-xl gap-y-1  ">
+            <Link href={`/pokemonpage?pokemonname=${pokemonNameActual}`}>
+                <div  className="flex flex-auto grid grid-rows-10 grid-cols-10 rounded-lg shadow-md shadow-slate-500 hover:shadow-black hover:shadow-xl gap-y-1  ">
 
                     {/* Pokemon Sprite */}
                     <div className="col-span-10 rounded-t-lg row-span-6 bg-slate-100 content-center place-self-center">
@@ -71,7 +69,7 @@ export default function PokeCard({pokeName}: any) {
 
                     {/* Pokemon Name */}
                     <div className="col-span-10 row-span-1 text-xl font-semibold px-4">
-                        {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
+                        {pokemonNameActual.charAt(0).toUpperCase() + pokemonNameActual.slice(1)}
                     </div>
                     {/*  */}
 
@@ -103,7 +101,7 @@ export default function PokeCard({pokeName}: any) {
                     {/* Conditional (Conditioal Pokemon Type) */}
                     <div className="justify-center col-span-2 row-span-1">
                     {
-                        typecolour2 && 
+                        typecolour2 &&  
                         <TypeColourPicker colour={typecolour2}/>
                     }
                     </div>
