@@ -22,11 +22,11 @@ like that again but overall I found the process to be quite enjoyable actually. 
 Second Run: \
 Secondary pokemon details page: done \
 Search functionality: done \
-Eventually settled on sending props to pokemon details page via the url. \ Took a lot of time to get the bar char \
+Eventually settled on sending props to pokemon details page via the url.  Took a lot of time to get the bar char \
 working, because it turns out you have to use a dynamic load of apexcharts for it to work with NextJS - kept getting \
 a "window is undefined" error and took some searching to realise apexcharts is often the culprit for that.\
 Very annoying because it will run in dev absolutely fine, and then fail on build. \
-The search functionality returns a result as soon as you type the full name of a pokemon. \ 
+The search functionality returns a result as soon as you type the full name of a pokemon. 
 
 
 
