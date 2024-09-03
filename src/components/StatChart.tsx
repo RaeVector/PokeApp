@@ -1,21 +1,46 @@
-import ApexCharts from "apexcharts";
+import dynamic from "next/dynamic";
+const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false }); //normal apex-charts import does not work in nextjs 
 
-export default function StatsChart({intlist}: {intlist: string[]}){
+
+export default function StatsChart({intlist}: {intlist:string[]}){
+    //destructuring stats variable
     const stats = intlist
     const pokeStats = Object.values(stats)
-    
-    const hp = pokeStats[0]
-    const attack = pokeStats[1]
-    const defense = pokeStats[2]
-    const special_attack = pokeStats[3]
-    const special_defense = pokeStats[4]
-    const speed = pokeStats[5]
 
-    const options = {
-        series: [
+    //pulling seperate state variables
+    const hp: number = Number(pokeStats[0])
+    const attack:number = Number(pokeStats[1])
+    const defense:number = Number(pokeStats[2])
+    const special_attack:number = Number(pokeStats[3])
+    const special_defense:number = Number(pokeStats[4])
+    const speed:number = Number(pokeStats[5])
+
+    //I give thanks to the apexcharts documentation
+    //but also not because at no point do they suggest
+    //that apexcharts doesn't usually work on nextjs
+        const options = {
+          chart: {
+            id: "bar"
+          },
+          colors:['#000000'],
+          xaxis: {
+            categories: [
+              "HP", 
+              "Attack", 
+              "Defense", 
+              "Special Attack", 
+              "Special Defense", 
+              "Speed"]
+          },
+          plotOptions: {
+            bar: {
+              horizontal: true,
+            },
+        }
+        }
+        const series = [
           {
-            name: "stats",
-            color: "#000000",
+            name: "series",
             data: [
               hp,
               attack,
@@ -24,62 +49,12 @@ export default function StatsChart({intlist}: {intlist: string[]}){
               special_defense,
               speed
             ]
-        }
-        ],
-        chart: {
-            // sparkline: {
-            //     enabled: false,
-            //   },
-            type: "bar",
-            height: "280px",
-            toolbar: {
-              show: false,
-            },
-          },
-          plotOptions: {
-            bar: {
-              horizontal: true,
-              columnWidth: "50%",
-              borderRadius: 6,
-              dataLabels: {
-                position: "top",
-              },
-            },
-        },
-        xaxis:{
-            labels:{
-                show:false
-            },
-            axisBorder: {
-                show: false,
-              },
-              axisTicks: {
-                show: false,
-              },
-            categories:[
-                "HP", 
-                "Attack", 
-                "Defense", 
-                "Special Attack", 
-                "Special Defense", 
-                "Speed"
-            ],
-        },
-        yaxis: {
-            labels:{
-               show: true, 
-            }
-          },
-        fill: {
-            opacity: 1,
-        }
-        }     
-        if (document.getElementById("bar-chart") && typeof ApexCharts !== 'undefined') {
-            const chart = new ApexCharts(document.getElementById("bar-chart"), options);
-            chart.render();
-          }       
+          }
+        ]
+      
     return(
-        <div id="bar-chart">
+        <div>
+          <ApexChart type="bar" options={options} series={series} height={200} width={500} />
         </div>
     )
 }

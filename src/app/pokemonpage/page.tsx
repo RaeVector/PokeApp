@@ -12,17 +12,14 @@ export default function Home(this: any){
     //this is basically to stop html hydration issue
     const [isMounted, setIsMounted] = useState(false);
 
-    const [pokemonName, setPokemonName] = useState<string | null>('bubasaur');
-    // const [searchParams, setSearchParams] = useSearchParams('bulbasaur');
-    // const pokemonName = this.props.location.query.pokemonname
-    // const pokemonName = pokemonname
+    const [pokemonName, setPokemonName] = useState<string | null>('bulbasaur');
 
     useEffect(() => {
       setIsMounted(true);
-      const urlSearchString = window.location.search;
-      const params = new URLSearchParams(urlSearchString);
-      if (!(params==null)){
-        setPokemonName(params.get('pokemonname'))
+      const params = window.location.search      
+      const param = new URLSearchParams(params);
+      if (!(param==null)){
+        setPokemonName(param.get('pokemonname'))
       }
       
     }, []);
@@ -38,8 +35,7 @@ export default function Home(this: any){
                   </div>
                   <div>
                     <Footer/>
-                  </div>
-                    
+                  </div> 
                 </PokemonDetailLayout>
     )
 }

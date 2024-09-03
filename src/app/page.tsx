@@ -113,7 +113,7 @@ export default function Home() {
           {
             foundPokemon !== true ? 
             <div>
-              <PokeGrid  pokemonList={pokemonList}/>
+              <PokeGrid  pokemonList={data}/>
             </div>
             :
             <div className="w-48">
@@ -161,7 +161,10 @@ export default function Home() {
               {/* ----------- */}
           </div>
         </div>
-        <Footer/>
+        <div>
+          <Footer/>
+        </div>
+          
         </div>
       </RootLayout>
     

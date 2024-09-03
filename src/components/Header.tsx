@@ -3,7 +3,8 @@ import Link from "next/link"
 
 export default function Header() {
     return (
-        <div className="flex flex-row flex-col content-center justify-center align-center items-center p-10">
+        <div>
+            <div className="flex flex-row flex-col content-center justify-center align-center items-center p-10">
                     <Image
                             src={'/pokeball.png'}
                             width={30}
@@ -20,6 +21,8 @@ export default function Header() {
                     Search and find Pokémon!
                 </h1>
             </div>
+            </div>
         </div>
+        
     )
 }

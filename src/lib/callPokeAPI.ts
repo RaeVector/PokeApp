@@ -98,9 +98,7 @@ export async function fetchPokemon(pokemon: any){
     } 
     })()
 
-    // const flavorText = JSON.stringify(second_results.flavor_text_entries[0].flavor_text); 
-    const flavorText1 = flavorText.replace(/\\n/g," "); //this is a bit messy but kept getting "no glyph"
-    //its getting mad here about type but it seems fine
+    const flavorText1 = flavorText!.replace(/\\n/g," "); //this is a bit messy but kept getting "no glyph"
     const flavorText2 = flavorText1.replace(/\"/g, "")
     const flavourText = flavorText2.replace(/\\f/g," ");
 
